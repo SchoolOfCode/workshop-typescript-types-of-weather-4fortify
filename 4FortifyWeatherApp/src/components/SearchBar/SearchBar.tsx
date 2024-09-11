@@ -11,7 +11,7 @@ export default function SearchBar() {
     useEffect(() => {
         if (postCode) {
             fetch(
-                "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=a3c3004500706958e6d49445d2d416f3"
+                "https://api.openweathermap.org/data/2.5/weather?q=london&appid=a3c3004500706958e6d49445d2d416f3&units=metric"
             )
                 .then((response) => response.json())
                 .then((data) => setFetchedData(data));
@@ -22,7 +22,10 @@ export default function SearchBar() {
         <>
             <input type="text" placeholder="Search your city!" />
             <button onClick={() => handleClick("England")}>Go</button>
-            <p>{fetchedData && ...fetchedData.weather[0]}</p>
+            <p>{fetchedData && `City: ${fetchedData.name}`}</p>
+            <p> {fetchedData && `Temperature: ${fetchedData.main.temp} ℃`}</p>
+            <p>{fetchedData && `Conditions: ${fetchedData.weather[0].main}`}</p>
+            <p>{fetchedData && `Conditions description: ${fetchedData.weather[0].description}`}</p>
         </>
     );
 }
