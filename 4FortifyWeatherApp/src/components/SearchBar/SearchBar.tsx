@@ -1,10 +1,21 @@
 import { useState } from "react";
 import "./SearchBar.css";
+import { ChangeEvent } from "react";
 
+interface WeatherData {
+  name: string;
+  main: {
+      temp: number;
+  };
+  weather: {
+      main: string;
+      description: string;
+  }[];
+}
 
 export default function SearchBar() {
     let [cityName, setCityName] = useState<string> ("");
-    let [fetchedData, setFetchedData] = useState(null);
+    let [fetchedData, setFetchedData] = useState<WeatherData | null>(null);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setCityName(event.target.value);
@@ -31,7 +42,7 @@ export default function SearchBar() {
 
             <button onClick={() => handleClick()}>Go</button>
             <p>{fetchedData && `City: ${fetchedData.name}`}</p>
-            <p> {fetchedData && `Temperature: ${fetchedData.main.temp} ℃`}</p>
+            <p>{fetchedData && `Temperature: ${fetchedData.main.temp} ℃`}</p>
             <p>{fetchedData && `Conditions: ${fetchedData.weather[0].main}`}</p>
             <p>
                 {fetchedData &&
