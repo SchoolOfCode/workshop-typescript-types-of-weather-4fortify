@@ -3,10 +3,10 @@ import "./SearchBar.css";
 
 
 export default function SearchBar() {
-    let [cityName, setCityName] = useState("");
+    let [cityName, setCityName] = useState<string> ("");
     let [fetchedData, setFetchedData] = useState(null);
 
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setCityName(event.target.value);
     };
 
