@@ -32,10 +32,11 @@ specify object parameters to display (weather, temp, location etc)✅
 create the React components and create the logic in Typescript  ✅
 create error handling
 separate react components into searchbar, weather display, error section
-
+default prevent submission of empty search bar - currently does nothing if empty
 
 # Learnings
 Read API documentation thoroughly - initially thought we had to do a double API fetch route to get location then convert to lon/lat for weather.
 Practise react more
 Then apply TS to it.
 There are multiple TS types we weren't aware of, like ChangeEvent types and the specific html element they are associated with.
+if this was a proper app and not just dev, would have put api key in env file
