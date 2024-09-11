@@ -11,7 +11,7 @@ export default function SearchBar() {
     useEffect(() => {
         if (postCode) {
             fetch(
-                `https://seal-app-336e8.ondigitalocean.app/reviews?country=${postCode}`
+                "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=a3c3004500706958e6d49445d2d416f3"
             )
                 .then((response) => response.json())
                 .then((data) => setFetchedData(data));
@@ -22,7 +22,7 @@ export default function SearchBar() {
         <>
             <input type="text" placeholder="Search your city!" />
             <button onClick={() => handleClick("England")}>Go</button>
-            {fetchedData && fetchedData.text}
+            <p>{fetchedData && ...fetchedData.weather[0]}</p>
         </>
     );
 }
